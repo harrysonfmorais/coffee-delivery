@@ -13,10 +13,12 @@ import {
 import coffee from '../../assets/coffee.png'
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { CoffeesForSale } from './components/CoffeesForSale'
-
-import { coffees } from '../../utils/coffee-list'
+import { useContext } from 'react'
+import { CoffeeContext } from '../../context/CoffeeContext'
 
 export function Home() {
+  const { coffeeShop } = useContext(CoffeeContext)
+
   return (
     <>
       <HomeContainer>
@@ -63,15 +65,15 @@ export function Home() {
         <h2>Nossos cafés</h2>
 
         <CoffeeListContent>
-          {coffees.map((coffee) => {
+          {coffeeShop.map((coffee) => {
             return (
               <CoffeesForSale
                 key={coffee.name}
-                // cofImg={coffee.img}
+                coffeeImg={coffee.img}
                 description={coffee.description}
                 name={coffee.name}
                 price={coffee.price}
-                tag={coffee.tag[0]}
+                tag={coffee.tag}
               />
             )
           })}

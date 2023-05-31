@@ -13,6 +13,8 @@ export const CoffeeContainer = styled.section`
 
   img {
     margin-top: -1.25rem;
+    background: transparent;
+    border-radius: 50%;
   }
 
   h3 {
@@ -57,10 +59,33 @@ export const PriceContainer = styled.div`
     font-size: 1.5rem;
   }
 
-  > button {
+  > a {
     border: none;
     padding: 0.25rem 0.5rem;
     border-radius: 8px;
     background: ${(props) => props.theme['purple-dark']};
   }
+`
+
+/* Count */
+
+export const CountContainer = styled.div`
+  width: 4.5rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+
+  background: ${(props) => props.theme['base-hover']};
+`
+
+export const ButtonContainer = styled.button`
+  border: none;
+
+  background: ${(props) => props.theme['base-hover']};
+`
+
+export const AmountContainer = styled.span`
+  padding: 0 0.5rem;
 `

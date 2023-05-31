@@ -84,7 +84,6 @@ export function Checkout() {
         <CoffeeSelectContent>
           <div>
             <SelectedCoffees />
-            <SelectedCoffees />
           </div>
 
           <TotalItensContainer>

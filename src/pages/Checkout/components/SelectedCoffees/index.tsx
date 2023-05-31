@@ -5,15 +5,26 @@ import {
   SelectedCoffeesContainer,
   SelectedCoffeesContent,
 } from './styles'
+import { useContext, useEffect } from 'react'
+import { CoffeeContext } from '../../../../context/CoffeeContext'
 
-import coffee from '../../../../assets/express-americano.png'
+interface SelectedCoffeesProps {
+  name: string
+  img: string
+  price: number
+}
 
-export function SelectedCoffees() {
+export function SelectedCoffees({ img, name, price }: SelectedCoffeesProps) {
+  const { updateCoffeeAmount, coffeeAmount } = useContext(CoffeeContext)
+
+  useEffect(() => {
+    updateCoffeeAmount(name, coffeeAmount)
+  }, [name, coffeeAmount, updateCoffeeAmount])
   return (
     <SelectedCoffeesContainer>
-      <img src={coffee} alt="" />
+      <img src={img} alt="" />
       <SelectedCoffeesContent>
-        <span>Expresso Tradicional</span>
+        <span>{name}</span>
         <ButtonsContainer>
           <Count />
           <button>
@@ -22,7 +33,7 @@ export function SelectedCoffees() {
           </button>
         </ButtonsContainer>
       </SelectedCoffeesContent>
-      <strong>9,90</strong>
+      <strong>{price}</strong>
     </SelectedCoffeesContainer>
   )
 }

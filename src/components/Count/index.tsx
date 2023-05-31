@@ -7,7 +7,7 @@ export function Count() {
       <ButtonContainer>
         <Minus size={14} color="#8047F8" weight="bold" />
       </ButtonContainer>
-      <AmountContainer>1</AmountContainer>
+      <AmountContainer>0</AmountContainer>
       <ButtonContainer>
         <Plus size={14} color="#8047F8" weight="bold" />
       </ButtonContainer>
