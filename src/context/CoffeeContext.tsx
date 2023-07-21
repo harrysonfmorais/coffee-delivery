@@ -26,15 +26,16 @@ interface CoffeeContextProps {
 
 export function CoffeeContextProvider({ children }: CoffeeContextProps) {
   function updateCoffeeAmount(coffeeName: string, coffeeAmount: number) {
-    coffeeShop.map((coffee) => {
-      if (coffee.name === coffeeName) {
-        return (coffee.amount = coffeeAmount)
-      } else {
-        return coffee
-      }
-    })
-
-    updateCoffeeCart()
+    setCoffeeShop(
+      coffeeShop.map((coffee) => {
+        if (coffee.name === coffeeName) {
+          return { ...coffee, amount: coffeeAmount }
+          // return (coffee.amount = coffeeAmount)
+        } else {
+          return coffee
+        }
+      }),
+    )
   }
 
   function updateCoffeeCart() {
@@ -54,22 +55,31 @@ export function CoffeeContextProvider({ children }: CoffeeContextProps) {
   const [coffeeShop, setCoffeeShop] = useState<CoffeeCartProps[]>([])
 
   useEffect(() => {
-    const storedCoffeeStateAsJSON = localStorage.getItem(
-      '@coffee-delivery:state-1.0.0',
-    )
-
-    if (storedCoffeeStateAsJSON) {
-      return JSON.parse(storedCoffeeStateAsJSON)
-    } else {
-      const initialCoffeeShop: CoffeeCartProps[] = coffees
-      const stateCoffeeJSON = JSON.stringify(initialCoffeeShop)
-      setCoffeeShop(initialCoffeeShop)
-      localStorage.setItem('@focus-timer:cycles-state-1.0.0', stateCoffeeJSON)
-    }
-    // const initialCoffeeShop: CoffeeCartProps[] = coffees
-    // setCoffeeShop(initialCoffeeShop)
+    setCoffeeShop(coffees)
   }, [])
 
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeeShop)
+    localStorage.setItem('@coffee-delivery-1.0.0', stateJSON)
+  }, [coffeeShop])
+
+  // useEffect(() => {
+  //   const storedCoffeeStateAsJSON = localStorage.getItem(
+  //     '@coffee-delivery:state-1.0.0',
+  //   )
+
+  //   if (storedCoffeeStateAsJSON) {
+  //     return JSON.parse(storedCoffeeStateAsJSON)
+  //   } else {
+  //     const initialCoffeeShop: CoffeeCartProps[] = coffees
+  //     const stateCoffeeJSON = JSON.stringify(initialCoffeeShop)
+  //     setCoffeeShop(initialCoffeeShop)
+  //     localStorage.setItem('@focus-timer:cycles-state-1.0.0', stateCoffeeJSON)
+  //   }
+  // }, [])
+
+  // const initialCoffeeShop: CoffeeCartProps[] = coffees
+  // setCoffeeShop(initialCoffeeShop)
   return (
     <CoffeeContext.Provider
       value={{

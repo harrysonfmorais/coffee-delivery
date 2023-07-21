@@ -1,65 +1,64 @@
-import {
-  CardContainer,
-  AdressContent,
-  IconMapContainer,
-  SuccessContainer,
-  SuccessContent,
-  TextContainer,
-  TimerContent,
-  PaymentContainer,
-  IconTimerContainer,
-  IconDolarContainer,
-} from './styles'
+import { RegularText, TitleText } from '../../components/Typhography'
+import { SuccessContainer, SuccessDetailsContainer } from './styles'
 
-import delivery from '../../assets/delivery.png'
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import deliveryLogo from '../../assets/delivery.svg'
+import { InfoWithIcon } from '../../components/InfoWithIcon'
+import { Clock, CurrencyDollar, MapPin } from 'phosphor-react'
+import { useTheme } from 'styled-components'
 
 export function Success() {
+  const { colors } = useTheme()
+
   return (
-    <SuccessContainer>
-      <h3>Uhu!Pedido confirmado</h3>
-      <p>Agora é só aguardar que logo o café chegará até você</p>
+    <SuccessContainer className="container">
+      <div>
+        <TitleText size="l">Uhu! Pedido confirmado</TitleText>
+        <RegularText size="l" color="subtitle">
+          Agora é só aguardar que logo o café chegará até você
+        </RegularText>
+      </div>
 
-      <SuccessContent>
-        <CardContainer>
-          <AdressContent>
-            <IconMapContainer>
-              <MapPin size={16} weight="fill" color="white" />
-            </IconMapContainer>
-            <TextContainer>
-              <span>
+      <section>
+        <SuccessDetailsContainer>
+          <InfoWithIcon
+            icon={<MapPin weight="fill" />}
+            iconColor={colors.purple}
+            text={
+              <RegularText>
                 Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
-              </span>
-              <span>Farrapos - Porto Alegre, RS</span>
-            </TextContainer>
-          </AdressContent>
+                <br />
+                Farrapos - Porto Alegre, RS
+              </RegularText>
+            }
+          />
 
-          <TimerContent>
-            <IconTimerContainer>
-              <Timer size={16} weight="fill" color="white" />
-            </IconTimerContainer>
-            <TextContainer>
-              <span>Previsão de entrega</span>
-              <span>
+          <InfoWithIcon
+            icon={<Clock weight="fill" />}
+            iconColor={colors.yellow}
+            text={
+              <RegularText>
+                Previsão de entrega
+                <br />
                 <strong>20 min - 30 min</strong>
-              </span>
-            </TextContainer>
-          </TimerContent>
+              </RegularText>
+            }
+          />
 
-          <PaymentContainer>
-            <IconDolarContainer>
-              <CurrencyDollar size={16} weight="fill" color="white" />
-            </IconDolarContainer>
-            <TextContainer>
-              <span>Pagamento na entrega</span>
-              <span>
+          <InfoWithIcon
+            icon={<CurrencyDollar weight="fill" />}
+            iconColor={colors.yellow}
+            text={
+              <RegularText>
+                Pagamento na entrega
+                <br />
                 <strong>Cartão de Crédito</strong>
-              </span>
-            </TextContainer>
-          </PaymentContainer>
-        </CardContainer>
-        <img src={delivery} alt="" />
-      </SuccessContent>
+              </RegularText>
+            }
+          />
+        </SuccessDetailsContainer>
+
+        <img src={deliveryLogo} alt="" />
+      </section>
     </SuccessContainer>
   )
 }

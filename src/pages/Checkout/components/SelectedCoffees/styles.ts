@@ -1,49 +1,27 @@
 import styled from 'styled-components'
+import { SectionBaseStyle } from '../../styles'
 
 export const SelectedCoffeesContainer = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 1.5rem 0;
-
-  > img {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  border-bottom: 1px solid ${(props) => props.theme['base-hover']};
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 40rem;
 `
-export const SelectedCoffeesContent = styled.div`
+
+export const DetailsContainer = styled(SectionBaseStyle)`
+  border-radius: 6px 44px 6px 44px;
   display: flex;
   flex-direction: column;
-
-  span {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: ${(props) => props.theme['base-subtitle']};
-  }
 `
 
-export const ButtonsContainer = styled.div`
+export const ConfirmationSectionContainer = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.8rem;
 
-  margin-top: 0.5rem;
-
-  > button {
-    border: none;
-    height: 2rem;
-    padding: 0.5rem;
-    background: ${(props) => props.theme['base-hover']};
-    color: ${(props) => props.theme['base-subtitle']};
-    border-radius: 8px;
-
+  > div {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    justify-content: space-between;
   }
 `

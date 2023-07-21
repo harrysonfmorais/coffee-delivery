@@ -1,47 +1,60 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  width: 90rem;
+  width: 100%;
   height: 6.5rem;
-  padding: 0 10rem;
-  margin: 0 auto;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
+
+  background: ${(props) => props.theme.colors['base-background']};
 
   > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
   }
+`
+
+export const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 `
 
 export const LocationContainer = styled.div`
-  height: 2rem;
-  padding: 0.625rem;
+  min-width: 2.3rem;
+  height: 2.3rem;
+  padding: 0.5rem;
   border-radius: 8px;
-  background-color: ${(props) => props.theme['purple-light']};
+  background-color: ${(props) => props.theme.colors['purple-light']};
+  color: ${(props) => props.theme.colors['purple-dark']};
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
 
   > svg {
-    color: ${(props) => props.theme.purple};
+    color: ${(props) => props.theme.colors.purple};
   }
 `
 
-export const CarShoppContainer = styled.div`
+export const ButtonCarShoppContainer = styled.button`
   position: relative;
 
-  height: 2rem;
+  height: 2.3rem;
   padding: 0.5rem;
   border-radius: 8px;
-  background-color: ${(props) => props.theme['yellow-light']};
+  border: none;
+  background-color: ${(props) => props.theme.colors['yellow-light']};
   > svg {
-    color: ${(props) => props.theme['yellow-dark']};
+    color: ${(props) => props.theme.colors['yellow-dark']};
   }
 
   span {
@@ -58,7 +71,7 @@ export const CarShoppContainer = styled.div`
     padding: 0.75rem;
     border-radius: 50%;
     font-weight: 700;
-    background: ${(props) => props.theme['yellow-dark']};
-    color: ${(props) => props.theme.white};
+    background: ${(props) => props.theme.colors['yellow-dark']};
+    color: ${(props) => props.theme.colors.white};
   }
 `
