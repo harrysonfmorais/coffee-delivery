@@ -70,6 +70,7 @@ export const ButtonCarShoppContainer = styled.button`
     width: 1.25rem;
     padding: 0.75rem;
     border-radius: 50%;
+    font-size: 0.75rem;
     font-weight: 700;
     background: ${(props) => props.theme.colors['yellow-dark']};
     color: ${(props) => props.theme.colors.white};

@@ -9,8 +9,11 @@ import {
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import logo from '../../assets/logo.png'
+import { useCart } from '../../hooks/useCart'
 
 export function Header() {
+  const { cartQuantity } = useCart()
+
   return (
     <HeaderContainer>
       <div className="container">
@@ -26,6 +29,7 @@ export function Header() {
 
           <NavLink to="/checkout">
             <ButtonCarShoppContainer>
+              {cartQuantity >= 1 && <span>{cartQuantity}</span>}
               <ShoppingCart size={20} weight="fill" />
             </ButtonCarShoppContainer>
           </NavLink>
